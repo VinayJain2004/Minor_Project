@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert Generation</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #map {
+            width: 90%;
+            height: 400px;
+            margin: 0 auto;
+            border: 4px solid #ff4c4c;
+        }
+        .notification h1{
+            font-family: 'Poppins',sans-serif;
+            text-align: center;
+            font-weight: 600;
+            font-size: 40px;
+            text-align: center;
+            margin: 30px auto;
+            color: #ff4c4c;
+        }
+
+        /* Modal Styles */
+        #alertModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            font-family: 'Poppins',sans-serif;
+            color: #ff4c4c
+        }
+
+        #modalContent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #modalContent button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #modalContent .yes {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        #modalContent .no {
+            background-color: #f44336;
+            color: white;
+        }
+        @media (max-width: 900px) {
+            .notification h1{
+                font-size: 16px;
+            }
+            #modalContent{
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar and Hamburger-->
+
+<header>
+    <div class="containers"> 
+       <nav class="navbar links">
+
+          <div class="logo"><img src="./img/logo.png" alt="...loading"></div>
+
+          <ul class="nav-menu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="#features">Features</a>
+            <a href="safety.html">Safety Resources</a>
+            <a href="#contactus">Contact Us</a>
+            <div id="renderLoginState">
+
+            </div>
+            <!-- <a href="sign.html" target="_blank"><button class="secondary-btn">Sign In</button></a> -->
+            <a href="#"><button class="primary-btn">Alert</button></a>
+          </ul>
+          <div class="hamburger">
+             <span class="bar"></span>
+             <span class="bar"></span>
+             <span class="bar"></span>
+          </div>
+       </nav>
+    </div>
+ </header> 
+
+    <div class="notification"><h1>Alert and Notification Generation</h1></div>
+    <div id="map"></div>
+
+    <!-- Custom Alert Modal -->
+    <div id="alertModal">
+        <div id="modalContent">
+            <p>You are in an unsafe zone. Are you safe?</p>
+            <button class="yes">Yes</button>
+            <button class="no">No</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <div class="footer">
+        <div class="footer-logo">
+            <img src="./img/logo.png" alt="">
+            <h5>WomiShield</h5>
+            <p>WomiShield is a dedicated platform for women's safety, empowering users with real-time tools and resources for secure and confident living. Join us in building a safer tomorrow.</p>
+            <div class="media">
+                <img src="./img/instagram.png" alt="loading...">
+                <img src="./img/facebook.png" alt="loading...">
+                <img src="./img/twitter.png" alt="loading...">
+                <img src="./img/linkedin.png" alt="loading...">
+            </div>
+        </div>
+        <div class="footer-links">
+        <div class="footer-link">
+            <p>Quick Navigate </p>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="#features">Features</a>
+            <a href="safety.html">Safety Resources</a>
+            <a href="#contactus">Contact Us</a>
+        </div>
+
+        <div class="footer-link">
+            <p>Useful Links</p>
+            <a href="index.html">FAQs</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Emergency Alert</a>
+            <a href="sign.html">SignIn</a>
+        </div>
+
+        <div class="footer-link">
+            <p>Important Terms</p>
+            <a href="#">Safe Zone</a>
+            <a href="#">Alert</a>
+            <a href="#">Empowerment</a>
+            <a href="#">Awareness</a>
+            <a href="#">Safeguard</a>
+        </div>
+    </div>
+</div>
+
+<!-- Sub Footer -->
+
+<div class="sub-footer text">   
+    <a href="#">CopyRight &#169; 2024</a>    
+    <a href="#">All rights reserved</a>
+    <a href="#">Terms & Conditions</a>
+    <a href="#">Privacy Policy</a>
+</div>
+
+<script src="script.js"></script>
+
+<!-- below script must be included in every page to dynamically update navbar based on the login state -->
+<script src="./services/utils.js"></script>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="alert.js"></script>
+
+</body>
+
+</html>

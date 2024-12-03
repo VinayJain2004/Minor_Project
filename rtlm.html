@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Time Location Monitoring</title>
+
+    <!-- leaflet css  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <style>
+        #map {
+            width: 90%;
+            height: 400px;
+            margin: 0 auto;
+            border: 4px solid #ff4c4c;
+        }
+        .notification h1{
+            font-family: 'Poppins',sans-serif;
+            text-align: center;
+            font-weight: 600;
+            font-size: 40px;
+            text-align: center;
+            margin: 30px auto;
+            color: #ff4c4c;
+        }
+        @media (max-width: 900px) {
+            .notification h1{
+                font-size: 16px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<header>
+    <div class="containers"> 
+       <nav class="navbar links">
+
+          <div class="logo"><img src="./img/logo.png" alt="...loading"></div>
+
+          <ul class="nav-menu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="index.html">Features</a>
+            <a href="safety.html">Safety Resources</a>
+            <a href="index.html">Contact Us</a>
+            <div id="renderLoginState">
+
+            </div>
+            <!-- <a href="sign.html" target="_blank"><button class="secondary-btn">Sign In</button></a> -->
+            <a href="alert.html"><button class="primary-btn">Alert</button></a>
+          </ul>
+          <div class="hamburger">
+             <span class="bar"></span>
+             <span class="bar"></span>
+             <span class="bar"></span>
+          </div>
+       </nav>
+    </div>
+ </header> 
+
+ <div class="notification"><h1>Real Time Location Monitoring</h1></div>
+    <div id="map"></div>
+
+ <!-- Footer -->
+
+ <div class="footer">
+    <div class="footer-logo">
+        <img src="./img/logo.png" alt="">
+        <h5>WomiShield</h5>
+        <p>WomiShield is a dedicated platform for women's safety, empowering users with real-time tools and resources for secure and confident living. Join us in building a safer tomorrow.</p>
+        <div class="media">
+            <img src="./img/instagram.png" alt="loading...">
+            <img src="./img/facebook.png" alt="loading...">
+            <img src="./img/twitter.png" alt="loading...">
+            <img src="./img/linkedin.png" alt="loading...">
+        </div>
+    </div>
+    <div class="footer-links">
+    <div class="footer-link">
+        <p>Quick Navigate </p>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="#features">Features</a>
+        <a href="safety.html">Safety Resources</a>
+        <a href="#contactus">Contact Us</a>
+    </div>
+
+    <div class="footer-link">
+        <p>Useful Links</p>
+        <a href="index.html">FAQs</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Emergency Alert</a>
+        <a href="sign.html">SignIn</a>
+    </div>
+
+    <div class="footer-link">
+        <p>Important Terms</p>
+        <a href="#">Safe Zone</a>
+        <a href="#">Alert</a>
+        <a href="#">Empowerment</a>
+        <a href="#">Awareness</a>
+        <a href="#">Safeguard</a>
+    </div>
+</div>
+</div>
+
+<!-- Sub Footer -->
+
+<div class="sub-footer text">   
+<a href="#">CopyRight &#169; 2024</a>    
+<a href="#">All rights reserved</a>
+<a href="#">Terms & Conditions</a>
+<a href="#">Privacy Policy</a>
+</div>
+
+<script src="script.js"></script>
+
+<!-- leaflet js  -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<!-- below script must be included in every page to dynamically update navbar based on the login state -->
+<script src="./services/utils.js"></script>
+
+</body>
+</html>
+
+<script>
+    // Map initialization
+    var map = L.map('map').setView([23.2599, 77.4126], 15); // Default center: Bhopal with zoom level 15
+
+    // OpenStreetMap layer
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+    osm.addTo(map);
+
+    if (!navigator.geolocation) {
+        console.log("Your browser doesn't support geolocation feature!");
+    } else {
+        setInterval(() => {
+            navigator.geolocation.getCurrentPosition(updatePosition);
+        }, 5000); // Fetch location every 5 seconds
+    }
+
+    var marker, circle;
+
+    function updatePosition(position) {
+        // Extract latitude, longitude, and accuracy
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        var accuracy = position.coords.accuracy;
+
+        // Add or update marker and circle
+        if (!marker) {
+            // First-time setup: add marker and circle
+            marker = L.marker([lat, long]).addTo(map);
+            circle = L.circle([lat, long], { radius: accuracy }).addTo(map);
+
+            // Pan the map to the user's location on the first update
+            map.setView([lat, long], map.getZoom());
+        } else {
+            // Update marker and circle without affecting zoom level
+            marker.setLatLng([lat, long]);
+            circle.setLatLng([lat, long]).setRadius(accuracy);
+        }
+
+        console.log("Your location: Lat: " + lat + ", Long: " + long + ", Accuracy: " + accuracy + " meters");
+    }
+</script>

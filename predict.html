@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Safety Zones</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="unsafe.css">
+</head>
+<body>
+
+    <!-- Navbar and Hamburger-->
+
+    <header>
+        <div class="containers"> 
+           <nav class="navbar links">
+
+              <div class="logo"><img src="./img/logo.png" alt="...loading"></div>
+
+              <ul class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html">Features</a>
+                <a href="safety.html">Safety Resources</a>
+                <a href="index.html">Contact Us</a>
+                <div id="renderLoginState">
+
+                </div>
+                <a href="alert.html"><button class="primary-btn">Alert</button></a>
+              </ul>
+              <div class="hamburger">
+                 <span class="bar"></span>
+                 <span class="bar"></span>
+                 <span class="bar"></span>
+              </div>
+           </nav>
+        </div>
+     </header> 
+
+     <h1>City Safety Zones</h1>
+
+     <div class="container">
+    <div class="take-city"><label for="city">Select a City:</label>
+    <select id="city">
+        <option value="none">-- Select a City --</option>
+        <option value="bhopal">Bhopal</option>
+        <option value="indore">Indore</option>
+        <option value="ujjain">Ujjain</option>
+        <option value="jabalpur">Jabalpur</option>
+        <option value="gwalior">Gwalior</option>
+    </select>
+    </div>
+
+    <div class="table">
+    <table id="zonesTable">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Area</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be inserted dynamically -->
+        </tbody>
+    </table>
+    </div>
+
+    <div class="graph">
+    <canvas id="zoneChart"></canvas>
+    </div>
+     </div>
+
+<!-- Footer -->
+
+<div class="footer">
+    <div class="footer-logo">
+        <img src="./img/logo.png" alt="">
+        <h5>WomiShield</h5>
+        <p>WomiShield is a dedicated platform for women's safety, empowering users with real-time tools and resources for secure and confident living. Join us in building a safer tomorrow.</p>
+        <div class="media">
+            <img src="./img/instagram.png" alt="loading...">
+            <img src="./img/facebook.png" alt="loading...">
+            <img src="./img/twitter.png" alt="loading...">
+            <img src="./img/linkedin.png" alt="loading...">
+        </div>
+    </div>
+    <div class="footer-links">
+    <div class="footer-link">
+        <p>Quick Navigate </p>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="index.html">Features</a>
+        <a href="safety.html">Safety Resources</a>
+        <a href="index.html">Contact Us</a>
+    </div>
+
+    <div class="footer-link">
+        <p>Useful Links</p>
+        <a href="index.html">FAQs</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Emergency Alert</a>
+        <a href="sign.html">SignIn</a>
+    </div>
+
+    <div class="footer-link">
+        <p>Important Terms</p>
+        <a href="#">Safe Zone</a>
+        <a href="#">Alert</a>
+        <a href="#">Empowerment</a>
+        <a href="#">Awareness</a>
+        <a href="#">Safeguard</a>
+    </div>
+</div>
+</div>
+
+<!-- Sub Footer -->
+
+<div class="sub-footer text">   
+<a href="#">CopyRight &#169; 2024</a>    
+<a href="#">All rights reserved</a>
+<a href="#">Terms & Conditions</a>
+<a href="#">Privacy Policy</a>
+</div>
+
+<script src="./auth/login.js"></script>
+<script src="script.js"></script>
+<!-- below script must be included in every page to dynamically update navbar based on the login state -->
+<script src="./services/utils.js"></script>
+<script src="unsafe.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>
