@@ -7,10 +7,13 @@
 
  // Predefined unsafe zones
  const unsafeZones = [
-     { lat: 23.2599, lng: 77.4126 }, // Example: Center of Bhopal
-     { lat: 23.2558, lng: 77.3984 },  // Example: Another location in Bhopal
+     { lat: 23.2599, lng: 77.4126 }, 
+     { lat: 23.2558, lng: 77.3984 },  
      { lat: 23.2226816, lng: 77.447168},
-    {lat: 23.315417, lng: 77.362446}
+     { lat: 23.315417, lng: 77.362446},
+     { lat: 23.2023, lng: 77.4237},
+     { lat: 23.232512, lng: 77.430784 },
+     { lat: 23.3127915, lng: 77.3627743 }
  ];
 
  let lastSafeZonePopup = false; // Tracks whether safe zone popup has been shown
