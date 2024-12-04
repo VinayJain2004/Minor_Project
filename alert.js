@@ -13,7 +13,8 @@
      { lat: 23.315417, lng: 77.362446},
      { lat: 23.2023, lng: 77.4237},
      { lat: 23.232512, lng: 77.430784 },
-     { lat: 23.3127915, lng: 77.3627743 }
+     { lat: 23.3127915, lng: 77.3627743 },
+     { lat: 23.31, lng: 77.36 }
  ];
 
  let lastSafeZonePopup = false; // Tracks whether safe zone popup has been shown
